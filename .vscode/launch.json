@@ -1,0 +1,31 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Pull to Local",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/aws.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "--program=Retrieve"
+            ]
+        },
+        {
+            "name": "Python: Push to S3",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/aws.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "--program=Upload",
+                "--file=Testing/testing.txt"
+            ]
+        }
+    ]
+}
