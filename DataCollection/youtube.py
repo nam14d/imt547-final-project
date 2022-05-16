@@ -7,6 +7,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import utils
+import emoji
 
 def gather_from_youtube(query, n):
     hashtag = Hashtag(query, limit = n)
@@ -50,6 +51,8 @@ if __name__ == "__main__":
     parser.add_argument('-n', '--num', type=int, help='limiting the number of responses')
     args = parser.parse_args()
 
-    gather_from_youtube(args.query, args.num)
+    df = gather_from_youtube(args.query, args.num)
+    df['text'] = df['text'].apply(lambda x: emoji.demojize(x))
+    df.to_csv(f'{os.path.dirname(__file__)}/output/{args.query}_{args.num}.csv', index = False)
     s3 = utils.S3_Manager()
     s3.upload_to_bucket(filename=f'{os.path.dirname(__file__)}/output/{args.query}_{args.num}.csv', dirname='DataCollection')
