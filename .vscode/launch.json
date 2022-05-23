@@ -26,6 +26,18 @@
                 "--program=Upload",
                 "--file=Testing/testing.txt"
             ]
+        },
+        {
+            "name": "Python: Pull from YouTube",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/DataCollection/youtube.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "--query=marvel",
+                "--num=20"
+            ]
         }
     ]
 }
