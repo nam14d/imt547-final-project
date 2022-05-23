@@ -39,7 +39,7 @@ class S3_Manager():
                 print(file)
                 if filename:
                     for obj in self.s3.list_objects(Bucket = bucketname)['Contents']:
-                        if os.path.basename(obj['Key']) == filename & os.path.dirname(obj['Key'] == dirname):
+                        if os.path.basename(obj['Key']) == filename and os.path.dirname(obj['Key']) == dirname:
                             bucket.download_file(obj['Key'], filename)
                 elif dirname:
                     for obj in self.s3.list_objects(Bucket = bucketname)['Contents']:
